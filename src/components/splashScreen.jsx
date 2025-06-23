@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SplashScreen.css";
+import "./splashScreen.css";
 
 const SplashScreen = ({ onStart }) => {
   const [exit, setExit] = useState(false);
