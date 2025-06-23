@@ -1,0 +1,201 @@
+/* Tambahan/Perbaikan Sidebar Container */
+.sidebar-container {
+  background-color: #1e1e1e;
+  color: white;
+  width: 320px;
+  max-width: 90%;
+  padding: 20px;
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  animation: slideInLeft 0.3s ease-in-out;
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1001;
+}
+
+/* Tombol Close (X) */
+.close-sidebar {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: none;
+  border: none;
+  color: #ff4444;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1003;
+}
+
+/* Tombol Back (⟵) */
+.back-button-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1003;
+  transition: all 0.3s ease;
+}
+
+.back-button-icon:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+/* Responsif Mobile */
+@media (max-width: 480px) {
+  .sidebar-container {
+    width: 90%;
+    padding: 20px 16px;
+  }
+
+  .sidebar-title {
+    font-size: 1.2rem;
+  }
+
+  .signin-button, .signout-button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .session-item {
+    font-size: 0.85rem;
+  }
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sidebar-container {
+  width: 320px;
+  max-width: 90%;
+  background-color: #1e1e1e;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
+  animation: slideIn 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0.2; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #00ff88;
+}
+
+.sidebar-header h2 span {
+  color: white;
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: #ff6666;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar-auth {
+  margin: 20px 0;
+}
+
+.sidebar-button {
+  width: 100%;
+  padding: 10px 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.sidebar-button.login {
+  background-color: #00ff88;
+  color: black;
+}
+
+.sidebar-button.logout {
+  background-color: #ff4444;
+  color: white;
+}
+
+.sidebar-sessions {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.session-item {
+  background-color: #2a2a2a;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff6666;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.empty-history {
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+  margin-top: 20px;
+}
