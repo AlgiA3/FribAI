@@ -4,7 +4,6 @@ import run from "../gemini_api";
 import {
   saveConversation,
   getConversations,
-  deleteConversation,
   signInWithGoogle,
   signOutUser,
   auth

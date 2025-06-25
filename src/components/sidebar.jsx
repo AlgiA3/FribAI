@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { db, auth } from "../firebase_config";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import "./sidebar.css";
 
 const Sidebar = ({ onSelectSession, user, onClose }) => {
   const [sessions, setSessions] = useState([]);

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import Sidebar from "./components/sidebar";
@@ -25,12 +25,11 @@ function App() {
     setSelectedBackground,
     selectedGender,
     selectedBackground,
-    refreshHistory,
   } = useContext(dataContext);
 
   const [showSplash, setShowSplash] = useState(true);
   const [showPersonalization, setShowPersonalization] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar toggle
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleStartApp = () => {
     setShowSplash(false);
@@ -70,8 +69,14 @@ function App() {
 
   const handleSessionSelect = (session) => {
     setConversation(session.messages || []);
-    setIsSidebarOpen(false); // Close sidebar after selecting session
+    setIsSidebarOpen(false);
   };
+
+  useEffect(() => {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      alert("Browser tidak mendukung Speech Recognition.");
+    }
+  }, []);
 
   if (showSplash) return <SplashScreen onStart={handleStartApp} />;
   if (showPersonalization || !selectedGender || !selectedBackground)
@@ -79,7 +84,6 @@ function App() {
 
   return (
     <div className={`app-wrapper ${isSidebarOpen ? "sidebar-open" : ""}`}>
-      {/* Toggle Sidebar */}
       {!isSidebarOpen && (
         <>
           <button
@@ -107,13 +111,6 @@ function App() {
           />
         </div>
       )}
-
-      <button
-        className="back-button-icon"
-        onClick={() => setShowPersonalization(true)}
-      >
-        <IoArrowBackOutline size={24} />
-      </button>
 
       <div className="canvas-container">
         <Canvas shadows camera={{ position: [0, 0, 8], fov: 42 }}>
